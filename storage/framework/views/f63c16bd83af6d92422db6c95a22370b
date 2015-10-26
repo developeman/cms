@@ -1,0 +1,85 @@
+<?php $__env->startSection('content'); ?>
+
+<div>
+
+  <!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+	<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">عرض كل المواضيع</a></li>
+	<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">إضافة موضوع جديد</a></li>
+</ul>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="home">
+	<table class="table table-responsive table-striped">
+		<thead>
+			<th>#</th>
+			<th>اسم الموضوع</th>
+			<th>القسم</th>
+			<th>خيارات</th>
+		</thead>
+		<tbody>
+			<?php foreach($articles as $art): ?>
+			<tr>
+				<td><?php echo $art->id; ?></td>
+				<td><?php echo $art->name; ?></td>
+				<td>
+					<?php 
+					$cats_name = DB::table('cats')->where('id',$art->cat_id)->get()
+					?>
+					<?php foreach($cats_name as $cat_name): ?>
+					<?php echo $cat_name->name; ?>
+
+					<?php endforeach; ?>
+				</td>
+				<td>
+  					<a href="<?php echo Url('/'); ?>/admin/articles/edit/<?php echo $art->id; ?>" class="btn btn-warning">تعديل</a>
+					<a href="<?php echo Url('/'); ?>/admin/articles/delete/<?php echo $art->id; ?>" class="btn btn-danger" onclick="return confirm('هل انتا متأكد من حذف هذا الموضوع ؟')">حذف</a>
+				</td>
+			</tr>	
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+      <?php echo $articles->render(); ?>
+	
+  </div>
+  <div role="tabpanel" class="tab-pane fade" id="profile">
+	<?php echo Form::open(); ?>
+
+		<?php echo Form::label('اسم الموضوع'); ?>
+
+		<?php echo Form::text('name',NULL,['class'=>'form-control']); ?>
+
+		<?php echo Form::label('القسم'); ?>
+
+		<select class="form-control" name="cat">
+			<?php foreach($cats as $cat): ?>
+			<option value="<?php echo $cat->id; ?>"> --<?php echo $cat->name; ?></option>
+			 <?php
+				$subcats = DB::table('cats')->where('ct_id',$cat->id)->get();
+			  ?>
+				<?php foreach($subcats as $sub): ?>
+				<option value="<?php echo $sub->id; ?>"> ----<?php echo $sub->name; ?></option>
+				<?php endforeach; ?>
+			<?php endforeach; ?>
+		</select>
+		<?php echo Form::label('محتوى الموضوع'); ?>
+
+		<?php echo Form::textarea('art',NULL,['class'=>'form-control ckeditor']); ?>
+
+		<br> 
+		<?php echo Form::submit('إضافة',['class'=>'btn btn-primary']); ?>
+
+
+	<?php echo Form::close(); ?>
+
+
+
+  </div>
+</div>
+
+</div>
+
+
+<?php $__env->stopSection(); ?> 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

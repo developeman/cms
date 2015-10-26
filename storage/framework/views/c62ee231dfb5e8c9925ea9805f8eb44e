@@ -1,0 +1,16 @@
+<?php $__env->startSection('content'); ?>
+
+<?php foreach($pages as $page): ?>
+
+<?php $__env->startSection('title'); ?>
+<?php echo $page->name; ?>
+
+<?php $__env->stopSection(); ?>
+
+<p><?php echo $page->content; ?></p>
+
+<?php endforeach; ?>
+
+<?php $__env->stopSection(); ?> 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

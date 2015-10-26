@@ -1,0 +1,275 @@
+<?php 
+use Illuminate\Support\Facades\DB as DB;
+$setting=DB::table('settings')->get();
+?>
+<?php foreach($setting as $settings): ?>
+<?php endforeach; ?>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en" class="chrome  win"><head>
+		<!--
+    Created by Artisteer v3.0.0.35414
+    Base template (without user's data) checked by http://validator.w3.org : "This page is valid XHTML 1.0 Transitional"
+    -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+		<title><?php echo $settings->title; ?> - <?php echo $__env->yieldContent('title'); ?></title>
+		<link media="all" type="text/css" rel="stylesheet" href="<?php echo URL('/'); ?>/shoubra/style.css">
+
+		<script src="<?php echo URL('/'); ?>/shoubra/jquery.js"></script>
+
+		<script src="<?php echo URL('/'); ?>/shoubra/script.js"></script>
+
+		<!--[if IE 6]><link rel="stylesheet" href="./style.ie6.css" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="./style.ie7.css" type="text/css" media="screen" /><![endif]-->
+		<style type="text/css">
+.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	font-size: large;
+}
+.auto-style3 {
+	font-size: x-small;
+}
+</style>
+	</head>
+	<body>
+		<div id="art-page-background-middle-texture">
+			<div id="art-page-background-glare">
+				<div id="art-page-background-glare-image">
+					<div id="art-main">
+						<div class="art-sheet">
+							<div class="art-sheet-tl"></div>
+							<div class="art-sheet-tr"></div>
+							<div class="art-sheet-bl"></div>
+							<div class="art-sheet-br"></div>
+							<div class="art-sheet-tc"></div>
+							<div class="art-sheet-bc"></div>
+							<div class="art-sheet-cl"></div>
+							<div class="art-sheet-cr"></div>
+							<div class="art-sheet-cc"></div>
+							<div class="art-sheet-body">
+								<div class="art-header">
+									<div class="art-header-png"></div>
+									<div class="art-header-jpeg"></div>
+									<script type="text/javascript" src="<?php echo URL('/'); ?>/shoubra/swfobject.js"></script>
+									<div id="art-flash-area">
+										<div id="art-flash-container">
+											<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="792" height="225" id="art-flash-object">
+												<param name="movie" value="<?php echo URL('/'); ?>/shoubra/container.swf">
+												<param name="quality" value="high">
+												<param name="scale" value="default">
+												<param name="wmode" value="transparent">
+												<param name="flashvars" value="color1=0xFFFFFF&amp;alpha1=.40&amp;framerate1=24&amp;loop=true&amp;wmode=transparent&amp;clip=images/flash.swf&amp;radius=12&amp;clipx=0&amp;clipy=0&amp;initalclipw=900&amp;initalcliph=225&amp;clipw=900&amp;cliph=225&amp;width=792&amp;height=225&amp;textblock_width=0&amp;textblock_align=no">
+												<param name="swfliveconnect" value="true">
+												<!--[if !IE]>-->
+												<object type="application/x-shockwave-flash" data="<?php echo URL('/'); ?>/shoubra/container.swf" width="792" height="225">
+													<param name="quality" value="high">
+													<param name="scale" value="default">
+													<param name="wmode" value="transparent">
+													<param name="flashvars" value="color1=0xFFFFFF&amp;alpha1=.40&amp;framerate1=24&amp;loop=true&amp;wmode=transparent&amp;clip=<?php echo URL('/'); ?>/shoubra/images/flash.swf&amp;radius=12&amp;clipx=0&amp;clipy=0&amp;initalclipw=900&amp;initalcliph=225&amp;clipw=900&amp;cliph=225&amp;width=792&amp;height=225&amp;textblock_width=0&amp;textblock_align=no">
+													<param name="swfliveconnect" value="true">
+													<!--<![endif]-->
+													<div class="art-flash-alt"><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player"></a></div>
+													<!--[if !IE]>-->
+												</object>
+												<!--<![endif]-->
+											</object>
+										</div>
+									</div>
+									<script type="text/javascript">swfobject.switchOffAutoHideShow();swfobject.registerObject("art-flash-object", "9.0.0", "expressInstall.swf");</script>
+									<div class="art-logo">
+										<h1 id="name-text" class="art-logo-name"><a href="./index.html"><?php echo $settings->title; ?></a></h1>
+										<h2 id="slogan-text" class="art-logo-text">ترحب بكم 
+										فى موقعها الالكترونى على الانترنت</h2>
+									</div>
+								</div>
+								<div class="art-nav">
+									<div class="art-nav-l"></div>
+									<div class="art-nav-r"></div>
+									<ul class="art-menu">
+										<?php 
+										$pages = DB::table('pages')->where('display',1)->OrderBy('sort','Desc')->get();
+										?>
+										<?php foreach($pages as $page): ?>
+
+										<li><a href="<?php echo Url('/'); ?>/page/<?php echo $page->id; ?>"><span class="l"> </span><span class="r"> </span><span class="t"><?php echo $page->name; ?></span></a></li>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+								<div class="art-content-layout">
+									<div class="art-content-layout-row">
+										<div class="art-layout-cell art-content">
+											<div class="art-post">
+												<div class="art-post-tl"></div>
+												<div class="art-post-tr"></div>
+												<div class="art-post-bl"></div>
+												<div class="art-post-br"></div>
+												<div class="art-post-tc"></div>
+												<div class="art-post-bc"></div>
+												<div class="art-post-cl"></div>
+												<div class="art-post-cr"></div>
+												<div class="art-post-cc"></div>
+												<div class="art-post-body">
+														<?php echo $__env->yieldContent('content'); ?>
+												  
+												</div>
+											</div>
+											<div class="cleared"></div>
+										</div>
+										<div class="art-layout-cell art-sidebar1">
+											<div class="art-block">
+												<div class="art-block-tl"></div>
+												<div class="art-block-tr"></div>
+												<div class="art-block-bl"></div>
+												<div class="art-block-br"></div>
+												<div class="art-block-tc"></div>
+												<div class="art-block-bc"></div>
+												<div class="art-block-cl"></div>
+												<div class="art-block-cr"></div>
+												<div class="art-block-cc"></div>
+												<div class="art-block-body">
+													<div class="art-blockheader">
+														<div class="l"></div>
+														<div class="r"></div>
+														<h3 class="t">اخبـــار عن المدرسة</h3>
+													</div>
+													<div class="art-blockcontent">
+														<div class="art-blockcontent-tl"></div>
+														<div class="art-blockcontent-tr"></div>
+														<div class="art-blockcontent-bl"></div>
+														<div class="art-blockcontent-br"></div>
+														<div class="art-blockcontent-tc"></div>
+														<div class="art-blockcontent-bc"></div>
+														<div class="art-blockcontent-cl"></div>
+														<div class="art-blockcontent-cr"></div>
+														<div class="art-blockcontent-cc"></div>
+														<div class="art-blockcontent-body">
+															<p><br></p>
+															<p class="auto-style1">
+															<span class="auto-style2">
+															تكريم المتفوقين</span></p>
+															
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<p><br></p>
+															<div class="cleared"></div>
+														</div>
+													</div>
+													<div class="cleared"></div>
+												</div>
+											</div>
+											<div class="art-block" style="left: 0px; top: 0px; height: 256px">
+												<div class="art-block-tl"></div>
+												<div class="art-block-tr"></div>
+												<div class="art-block-bl"></div>
+												<div class="art-block-br"></div>
+												<div class="art-block-tc"></div>
+												<div class="art-block-bc" style="left: 13px; right: 13px; top: 52px; bottom: 106px; height: 10px"></div>
+												<div class="art-block-cl"></div>
+												<div class="art-block-cr"></div>
+												<div class="art-block-cc" style="left: 13px; right: 13px; top: 13px; bottom: 6px; height: 237px"></div>
+												<div class="art-block-body">
+													<div class="art-blockheader">
+														<div class="l"></div>
+														<div class="r"></div>
+														<h3 class="t">اعلانات</h3>
+													</div>
+													<div class="art-blockcontent">
+														<div class="art-blockcontent-tl"></div>
+														<div class="art-blockcontent-tr"></div>
+														<div class="art-blockcontent-bl"></div>
+														<div class="art-blockcontent-br"></div>
+														<div class="art-blockcontent-tc">
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+														</div>
+														<div class="art-blockcontent-bc" style="left: 8px; right: 8px; top: 36px; bottom: 0; height: 88px">
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+															<br>
+														</div>
+														<div class="art-blockcontent-cl"></div>
+														<div class="art-blockcontent-cr"></div>
+														<div class="art-blockcontent-cc" style="left: 8px; right: 8px; top: 8px; bottom: 113px; height: 3px"></div>
+														<div class="art-blockcontent-body" style="left: 0px; top: 0px; height: 118px">
+															<p style="height: 110px"><br>
+												<img width="170" height="100" alt="" src="<?php echo URL('/'); ?>/shoubra/images/Untitled-4.jpg" style="    margin-top: -10px;"></p>
+												<p style="text-align: center; "><span style="font-weight: bold; ">شركة الاهرام تكنولوجى&nbsp;</span></p>
+												<p style="text-align: center; "><span style="font-weight: bold;">شركة رائدة فى مجال البرمجيات وتصميم المواقع</span></p>
+															<div class="cleared"></div>
+														</div>
+													</div>
+													<div class="cleared"></div>
+												</div>
+														<div class="art-blockcontent-bc"></div>
+											</div>
+											<div class="cleared"></div>
+										</div>
+									</div>
+								</div>
+								<div class="cleared"></div>
+								<div class="art-footer">
+									<div class="art-footer-t"></div>
+									<div class="art-footer-l"></div>
+									<div class="art-footer-b"></div>
+									<div class="art-footer-r"></div>
+									<div class="art-footer-body"><a href="./#" class="art-rss-tag-icon" title="RSS"></a>
+										<div class="art-footer-text">
+											<p><strong><?php echo $settings->copy; ?></strong></p>
+										</div>
+										<div class="cleared"></div>
+									</div>	
+								</div>
+								<div class="cleared"></div>
+							</div>
+						</div>
+						<div class="cleared"></div>
+						<p class="art-page-footer">&nbsp;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+</body></html>

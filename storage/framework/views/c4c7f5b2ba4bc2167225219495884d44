@@ -1,0 +1,92 @@
+<?php $__env->startSection('content'); ?>
+
+		
+<div>
+	<ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">عرض كل الأقسام</a></li>
+	    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">إضافة قسم جديد</a></li>  
+    </ul>
+
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade in active" id="home">
+			<table class="table table-responsive table-striped">
+				<thead>
+					<th>#</th>
+					<th>اسم القسم</th>
+					<th>خيارات</th>
+				</thead>
+				<tbody>
+						<?php foreach($cats as $cat): ?>
+						<tr>
+							<td><?php echo $cat->id; ?></td>
+							<td>
+								<div class="col-lg-12">
+									<?php echo $cat->name; ?>
+
+								<?php
+									$subcat = DB::table('cats')->where('ct_id',$cat->id)->get();
+								?>
+									<ol>
+									<?php foreach($subcat as $sub): ?>
+									<li>	<?php echo $sub->name; ?></li>
+									<?php endforeach; ?>
+										
+									</ol>
+								</div>
+								
+							</td>
+							<td>
+			  					<a href="<?php echo Url('/'); ?>/admin/cats/edit/<?php echo $cat->id; ?>" class="btn btn-warning">تعديل</a>
+								<a href="<?php echo Url('/'); ?>/admin/cats/delete/<?php echo $cat->id; ?>" class="btn btn-danger" onclick="return confirm('هل انتا متأكد من حذف هذا القسم ؟')">حذف</a>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+				</tbody>
+			</table>
+      <?php echo $cats->render(); ?>
+			
+		</div>
+		<div role="tabpanel" class="tab-pane fade" id="profile">
+			<?php echo Form::open(); ?>
+
+				<?php echo Form::label('اسم القسم'); ?>
+
+				<?php echo Form::text('name',NULL,['class'=>'form-control']); ?>
+
+				<?php echo Form::label('نوع القسم'); ?>
+
+				<?php echo Form::select('type',['0'=>'رئيسى',1=>'فرعى'],null,['class'=>'form-control','id'=>'type']); ?>
+
+				<div id="main_cat" style="display:none">
+					
+				<?php echo Form::label('اسم القسم الرئيسى'); ?>
+
+				<?php echo Form::select('ct_id',$list,null,['class'=>'form-control','id'=>'main']); ?>
+
+	
+				</div>
+				<br>
+				<?php echo Form::submit('إضافة',['class'=>'btn btn-primary']); ?>
+
+
+			<?php echo Form::close(); ?>
+
+	 	</div>
+	</div>
+
+	<script>
+	$(document).ready(function(){
+		$('#type').change(function get_data(){
+			if($('#type').val() == 0){
+			  $('#main_cat').hide('slow');
+			}else{
+			  $('#main_cat').show('slow'); 
+			}
+		})
+	})
+	</script>
+</div>
+<?php $__env->stopSection(); ?> 
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

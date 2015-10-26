@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+	<?php echo Form::open(); ?>
+
+	<?php echo Form::label('اسم الموقع'); ?>
+
+	<?php echo Form::text('title',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('وصف الموقع'); ?>
+
+	<?php echo Form::textarea('description',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('meta description'); ?>
+
+	<?php echo Form::text('meta_description',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('البريد الإلكترونى'); ?>
+
+	<?php echo Form::text('email',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('حالة الموقع'); ?>
+
+	<?php echo Form::select('status',['1'=>'مفتوح','0'=>'مغلق'],1,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('نص الحاله'); ?>
+
+	<?php echo Form::textarea('status_msg',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('نص حقوق الملكية'); ?>
+
+	<?php echo Form::text('copy',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('facebook'); ?>
+
+	<?php echo Form::text('facebook',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('google +'); ?>
+
+	<?php echo Form::text('google',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('twitter'); ?>
+
+	<?php echo Form::text('twitter',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('youtube'); ?>
+
+	<?php echo Form::text('youtube',NULL,['class'=>'form-control']); ?>
+
+
+	<?php echo Form::label('instegram'); ?>
+
+	<?php echo Form::text('instegram',NULL,['class'=>'form-control']); ?>
+
+	<br>
+	<?php echo Form::submit('حفظ',['class'=>'btn btn-primary']); ?>
+
+
+	<?php echo Form::close(); ?>
+
+
+
+<?php $__env->stopSection(); ?> 
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

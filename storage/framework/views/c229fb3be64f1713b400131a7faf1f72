@@ -1,0 +1,54 @@
+<?php $__env->startSection('content'); ?>
+
+		
+<div>
+	<ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">عرض كل الأقسام</a></li>
+	    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">إضافة قسم جديد</a></li>  
+    </ul>
+
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane fade" id="profile">
+			<?php echo Form::open(); ?>
+
+				<?php echo Form::label('اسم القسم'); ?>
+
+				<?php echo Form::text('name',NULL,['class'=>'form-control']); ?>
+
+				<?php echo Form::label('نوع القسم'); ?>
+
+				<?php echo Form::select('type',['0'=>'رئيسى',1=>'فرعى'],null,['class'=>'form-control','id'=>'type']); ?>
+
+				<div id="main_cat" style="display:none">
+					
+				<?php echo Form::label('اسم القسم الرئيسى'); ?>
+
+				<?php echo Form::select('ct_id',$list,null,['class'=>'form-control','id'=>'main']); ?>
+
+	
+				</div>
+				<br>
+				<?php echo Form::submit('إضافة',['class'=>'btn btn-primary']); ?>
+
+
+			<?php echo Form::close(); ?>
+
+	 	</div>
+	</div>
+
+	<script>
+	$(document).ready(function(){
+		$('#type').change(function get_data(){
+			if($('#type').val() == 0){
+			  $('#main_cat').hide('slow');
+			}else{
+			  $('#main_cat').show('slow'); 
+			}
+		})
+	})
+	</script>
+</div>
+<?php $__env->stopSection(); ?> 
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
